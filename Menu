@@ -1,0 +1,120 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+
+local gui = Library:create{
+    Theme = Library.Themes.Aqua
+}
+
+local tab = gui:tab{
+    Icon = "rbxassetid://8569322850",
+    Name = "Others"
+}
+local Item = gui:tab{
+    Icon = "rbxassetid://8569329439",
+    Name = "Items"
+}
+local Mod = gui:tab{
+    Icon = "rbxassetid://8498691140",
+    Name = "Mods"
+}
+
+Item:button({
+    Name = "Get Knife",
+    Callback = function()
+        workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single["Crude Knife"].ITEMPICKUP)
+    end
+})
+Item:button({
+    Name = "Get AK",
+    Callback = function()
+        workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP)
+    end
+})
+Mod:button({
+    Name = "Mod AK [Require AK to not be in hands]",
+    Callback = function()
+            local player = game:GetService("Players").LocalPlayer
+local gun = player.Backpack:FindFirstChild("AK-47")
+local sM = require(gun:FindFirstChild("GunStates"))
+sM["Damage"] = 100
+sM["MaxAmmo"] = 9999991
+sM["StoredAmmo"] = 9999991
+sM["FireRate"] = 0.05
+sM["AmmoPerClip"] = 9999991
+sM["Range"] = 5000
+sM["ReloadTime"] = 0.05
+sM["Bullets"] = 1
+sM["AutoFire"] = true
+    end
+})
+Item:button({
+    Name = "Get Remington 870",
+    Callback = function()
+        workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+    end
+})
+Item:button({
+    Name = "Get M9",
+    Callback = function()
+        workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver.M9.ITEMPICKUP)
+    end
+})
+Item:button({
+    Name = "Get Hammer",
+    Callback = function()
+        workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single.Hammer.ITEMPICKUP)
+    end
+})
+Mod:button({
+    Name = "Become Guard",
+    Callback = function()
+        workspace.Remote.TeamEvent:FireServer("Bright blue")
+    end
+})
+Mod:button({
+    Name = "Become Inmate",
+    Callback = function()
+        workspace.Remote.TeamEvent:FireServer("Bright orange")
+    end
+})
+Mod:button({
+    Name = "Become Neutral [Anti-arrest]",
+    Callback = function()
+        workspace.Remote.TeamEvent:FireServer("Medium stone grey")
+    end
+})
+
+local HitboxsSize = 2
+local HitboxsV = false
+
+Mod:Slider{
+	Name = "Hitbox Size",
+	Default = 1,
+	Min = 2,
+	Max = 200,
+	Callback = function(a) HitboxsSize = a end
+}
+Mod:Toggle{
+	Name = "Show Hitboxs",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) HitboxsV = state end
+}
+
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    local UserID = game.Players.LocalPlayer.UserId --Keeps sure to not mess with your character
+    if HitboxsV == true then
+        for i,v in pairs(game.Players:GetPlayers()) do
+            if v.UserId == UserID then
+                print("Urself")
+            else
+                v.Character.HumanoidRootPart.Size = Vector3.new(HitboxsSize,HitboxsSize,HitboxsSize) * 0.3
+                v.Character.HumanoidRootPart.Transparency = 0.5
+            end
+        end
+    else
+        for i,v in pairs(game.Players:GetPlayers()) do
+            v.Character.HumanoidRootPart.Transparency = 1
+        end
+    end
+end)
