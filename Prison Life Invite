@@ -1,0 +1,5 @@
+local Module = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
+
+Module.Prompt({ invite = "KB8NjHkXMr", name = "Xero's Server" }) -- name is optional
+
+Module.Join("KB8NjHkXMr")
