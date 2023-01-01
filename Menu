@@ -1,7 +1,9 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
-
+--Locals the Topbar and others--
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Bandilovecat1494/prison-life-Xero-hub-script/main/Credits%20%3A%3E",true))()
+--Starts the scripting...--
 local gui = Library:create{
-    Theme = Library.Themes.Aqua
+    Theme = Library.Themes.Dark
 }
 
 local tab = gui:tab{
@@ -35,15 +37,53 @@ Mod:button({
             local player = game:GetService("Players").LocalPlayer
 local gun = player.Backpack:FindFirstChild("AK-47")
 local sM = require(gun:FindFirstChild("GunStates"))
-sM["Damage"] = 100
-sM["MaxAmmo"] = 9999991
-sM["StoredAmmo"] = 9999991
+sM["Damage"] = 40
+sM["MaxAmmo"] = 90
+sM["StoredAmmo"] = 9000
 sM["FireRate"] = 0.05
-sM["AmmoPerClip"] = 9999991
-sM["Range"] = 5000
-sM["ReloadTime"] = 0.05
-sM["Bullets"] = 1
+sM["AmmoPerClip"] = 9000
+sM["Range"] = 90000
+sM["ReloadTime"] = 0.01
+sM["Bullets"] = 20
 sM["AutoFire"] = true
+    end
+})
+Mod:button({
+    Name = "LAGGER MODDER AK [Require AK to not be in hands]",
+    Callback = function()
+            local player = game:GetService("Players").LocalPlayer
+local gun = player.Backpack:FindFirstChild("AK-47")
+local sM = require(gun:FindFirstChild("GunStates"))
+sM["Damage"] = 40
+sM["MaxAmmo"] = 90000
+sM["StoredAmmo"] = 9000000
+sM["FireRate"] = 0.02
+sM["AmmoPerClip"] = 9000000
+sM["Range"] = 90000
+sM["ReloadTime"] = 0.01
+sM["Bullets"] = 60
+sM["AutoFire"] = true
+    end
+})
+Mod:button({
+    Name = "Mod taser [Require Taser to not be in hands]",
+    Callback = function()
+            				v = 'Taser'
+				local module = nil
+				if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
+					module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+				elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+					module = require(game:GetService("Players").LocalPlayer.Character[v].GunStates)
+				end
+				if module ~= nil then
+					module["MaxAmmo"] = math.huge
+					module["CurrentAmmo"] = math.huge
+					module["Spread"] = 0
+					module["Range"] = math.huge
+					module["Bullets"] = 20
+					module["ReloadTime"] = 0.01
+					module["AutoFire"] = true
+				end
     end
 })
 Item:button({
@@ -71,6 +111,18 @@ Mod:button({
     end
 })
 Mod:button({
+    Name = "Delete Humanoid",
+    Callback = function()
+        game.Players.LocalPlayer.Character.Humanoid:Destroy()
+        local Humanoid = Instance.new("Humanoid")
+        Humanoid.Parent = game.Players.LocalPlayer.Character
+        local Humanoid2 = Instance.new("Humanoid")
+        Humanoid2.Parent = game.Players.LocalPlayer.Character
+        wait(0.03)
+        Humanoid2:Destroy()
+    end
+})
+Mod:button({
     Name = "Become Inmate",
     Callback = function()
         workspace.Remote.TeamEvent:FireServer("Bright orange")
@@ -82,6 +134,57 @@ Mod:button({
         workspace.Remote.TeamEvent:FireServer("Medium stone grey")
     end
 })
+Mod:button({
+    Name = "Get All Weapons",
+    Callback = function()
+            for i,v in pairs(Workspace.Prison_ITEMS.giver:GetChildren()) do
+        lol = Workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+        print(lol)
+        end
+    end
+})
+Mod:button({
+    Name = "FE sword",
+    Callback = function()
+        local plr=game.Players.LocalPlayer;local tool=Instance.new("Tool",plr.Backpack)tool.GripPos=Vector3.new(0.1,-1,0)tool.Name="Sword"local k=Instance.new("Part",tool)k.Name="Handle"k.Size=Vector3.new(0.4,4,0.4)local l=Instance.new("Animation",tool)l.AnimationId="rbxassetid://218504594"local m=plr.Character.Humanoid:LoadAnimation(l)db=true;da=false;tool.Equipped:connect(function()tool.Activated:connect(function()if db==true then db=false;m:Play()wait()da=true;db=true;wait(0.1)da=false end end)end)k.Touched:connect(function(n)if da==true then local o=n.Parent.Humanoid;if o~=nil then local p=game.Players:FindFirstChild(n.Parent.Name)for j=1,10 do if p.Name~="RealAnimus"then game.ReplicatedStorage.meleeEvent:FireServer(p)end end end end end)
+    end
+})
+tab:button({
+    Name = "Admin",
+    Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/XTheMasterX/Scripts/Main/PrisonLife'),true))()
+    end
+})
+tab:button({
+    Name = "PrisonWare [Not mine]",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Denverrz/scripts/master/PRISONWARE_v1.3.txt"))();
+    end
+})
+local ssMsg = "Nothing..."
+tab:button({
+    Name = "Send message",
+    Callback = function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("idk help funny idk help funny NNN  Why   [Moon Client]: ".. ssMsg,"All")
+        wait(0.2)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ssMsg,"All")
+        
+        
+    end
+})
+Mod:button({
+    Name = "Fly script [Not mine]",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/h5QDPy6s",true))()
+    end
+})
+tab:button({
+    Name = "Nameless v3 or v4 [Ofc not mine]",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Bandilovecat1494/Others-OP-scripts/main/Nameless",true))()
+    end
+})
+local Aura = false
 
 local HitboxsSize = 2
 local HitboxsV = false
@@ -99,7 +202,46 @@ Mod:Toggle{
 	Description = nil,
 	Callback = function(state) HitboxsV = state end
 }
+local HN = false
+Mod:Toggle{
+	Name = "Hide name when can [Only hides when death happens like idk]",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) HN = state end
+}
+Mod:Toggle{
+	Name = "Kill Aura [TOO BUGGY THIS KILL AURA IS NOW SHUTDOWNED]",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) Aura = state end
+}
+local IM = false
+tab:Textbox{
+	Name = "Message",
+	Callback = function(text) ssMsg = text end
+}
+tab:Toggle{
+	Name = "Fast Respawn [Fixed] [Spawns Too much times] [Very OP xdd]",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) IM = state end
+}
+local ESPT = false
+Mod:Toggle{
+	Name = "Show ESP",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) ESPT = state end
+}
+local SR = false
+tab:Toggle{
+	Name = "Spam Cop items",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) SR = state end
+}
 
+local Respawning = false
 
 game:GetService("RunService").Heartbeat:Connect(function()
     local UserID = game.Players.LocalPlayer.UserId --Keeps sure to not mess with your character
@@ -117,4 +259,78 @@ game:GetService("RunService").Heartbeat:Connect(function()
             v.Character.HumanoidRootPart.Transparency = 1
         end
     end
+    if ESPT == true then
+        for i,v in pairs(game.Players:GetPlayers()) do
+		    local ESP = Instance.new("Highlight")
+	        ESP.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	        --Make Part to see other people--
+            local A = Instance.new("Part")
+            A.BrickColor = v.TeamColor
+            ESP.OutlineColor = A.Color
+            ESP.FillColor = A.Color
+	        ESP.Enabled = true
+	        ESP.Adornee = v.Character
+            ESP.Parent = v.Character
+	    end
+    end
+    game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
+    if IM == true then
+        local Old = game.Players.LocalPlayer.Character.Head.CFrame
+        wait(0.04)
+        if Respawning == false then
+            Respawning = true
+
+            local args = {
+                [1] = game.Players.LocalPlayer.Character.Name
+            }
+            if SR == true then
+                game.Players.LocalPlayer.Character.Humanoid.Health = -200
+            end
+            workspace.Remote.loadchar:InvokeServer(unpack(args))
+            wait(0.02)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Old
+            wait(0.03)
+            Respawning = false
+        end
+    end
 end)
+if HN == true then
+    if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+        wait(0.04)
+        game.Players.LocalPlayer.Character.Head.CFrame = CFrame.new(90,90,90)
+    end
+end
+--[[
+for i,v in pairs(game.Players:GetChildren()) do
+    if v.UserId == game.Players.LocalPlayer.UserId then
+        print("[Moon CLient]: Falsey tryed to hurt player [Thats You] Blocked Hurt")
+    else
+        if Aura == true then
+            game:GetService("ReplicatedStorage").meleeEvent:FireServer(v)
+            wait(0.02)
+        end
+    end
+end
+]]--
+
+end)
+
+
+
+while true do
+    wait(0.04) --Each Tick its checks
+    if SR == true then
+        local Old = game.Players.LocalPlayer.Character.Head.CFrame
+        local args = {
+            [1] = game.Players.LocalPlayer.Character.Name
+        }
+    
+        workspace.Remote.loadchar:InvokeServer(unpack(args))
+        wait(0.4)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Old
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-3,0)
+        wait(0.2)
+        game.Players.LocalPlayer.Character.Humanoid.Health = -200
+        
+    end
+end
