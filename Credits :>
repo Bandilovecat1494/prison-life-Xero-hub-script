@@ -4,6 +4,6 @@ local Title = "Thanks for using Moon Client <3"
 
 game:GetService("RunService").RenderStepped:Connect(function()
     Gui.hud.Topbar.titleBar.Title.Text = Title
-    Gui.hud.Topbar.titleBar.Title.BackgroundColor3 = Color3.fromRGB(96, 67, 109)
+    Gui.hud.Topbar.titleBar.BackgroundColor3 = Color3.fromRGB(96, 67, 109)
     Gui.hud.Topbar.Pulldownmenu.Frame.Description.Text = Dis
 end)
