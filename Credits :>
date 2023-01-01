@@ -1,0 +1,8 @@
+local Gui = game.Players.LocalPlayer.PlayerGui.Home
+local Dis = "Thanks for Using Moon Client Means alot to me :>"
+local Title = "Thanks for using Moon Client <3"
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    Gui.hud.Topbar.titleBar.Title.Text = Title
+    Gui.hud.Topbar.Pulldownmenu.Frame.Description.Text = Dis
+end)
